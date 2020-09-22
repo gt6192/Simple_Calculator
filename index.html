@@ -1,0 +1,141 @@
+<html>
+    <head>
+        <title>Calculator</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0 ">
+        <style>
+            *{
+                margin:0;
+                padding: 0;
+            }
+            .myVideo{
+                position: fixed;
+                top: -600;
+                right: 0;
+                width: 100%;
+            }
+            
+            .Cal{
+                background-color: transparent;
+                position: fixed;
+                top: 50%;
+                left: 5%;
+                width: 40%;
+                z-index: 999;
+                border-radius: 10px;
+                transform: translate(0,-50%);
+            }
+            .innerCal{
+                padding: 20px;
+            }
+            .innerCal input, select{
+                width: 100%;
+                padding: 10px 10px;
+                outline: none;
+            }
+            .innerCal button{
+                width: 100%;
+                padding: 10px 10px;
+                background-color: #35da20;
+                border: 2px solid  #1dbc08;
+                color: white;
+                font-weight: bold;
+                font-size: 20px;
+            }
+            .innerCal h2{
+                background-color: white;
+                border-radius: 2px;
+                padding: 10px;
+            }
+            nav{
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                z-index: 9999;
+                color: black;
+                padding: 8px;
+                text-align: center;
+                font-size: 25px;
+                background-color: white;
+            }
+            nav p{
+                font-size: 18px;
+                font-weight: bold;
+            }
+            
+            @media screen and (max-width:480px){
+                .myVideo{
+                    top: 0;
+                }
+                .Cal{
+                    background-color: transparent;
+                    width:90%;
+                    top: 50%;
+                    left: 50%;
+                    z-index: 999;
+                    border-radius: 10px;
+                    transform: translate(-50%,-50%);
+                }
+            }
+        </style>
+        
+    </head>
+    <body>
+        
+        <video autoplay muted loop class="myVideo">
+            <source src="back.mp4" type="video/mp4">
+        </video>
+        
+        <nav>
+            <h1>Calculator</h1>
+            <p>Pratik GT +91 9370981456</p>
+        </nav>
+        
+        <div class="Cal">
+            <div class="innerCal">
+                <input type="number" id="inp1"><br><br>
+                <input type="number" id="inp2"><br><br>
+                <select id="inp3">
+                    <option value="+">Addition +</option>
+                    <option value="-">Subtraction -</option>
+                    <option value="*">Multiplication *</option>
+                    <option value="/">Division /</option>
+                    <option value="%">Modulus %</option>
+                </select><br><br>
+                <button id="button" onclick="GT()">Calculate</button><br><br>
+                <h2 id="answer">Answer</h2>
+            </div>
+        </div>
+    </body>
+    <script>
+        function GT()
+        {
+            var num1 = document.getElementById("inp1").value;
+            var num2 = document.getElementById("inp2").value;
+            var ope = document.getElementById("inp3").value;
+            var h2 = document.getElementById("answer");
+            var ans = 0;
+            if(ope == "+")
+            {
+                ans = parseFloat(num1) + parseFloat(num2);
+            }
+            else if(ope == "-")
+            {
+                ans = parseFloat(num1) - parseFloat(num2);
+            }
+            else if(ope == "*")
+            {
+                ans = parseFloat(num1) * parseFloat(num2);
+            }
+            else if(ope == "/")
+            {
+                ans = parseFloat(num1) / parseFloat(num2);
+            }
+            else if(ope == "%")
+            {
+                ans = parseFloat(num1) % parseFloat(num2);
+            }
+            h2.innerHTML = ans;
+        }
+    </script>
+</html>
